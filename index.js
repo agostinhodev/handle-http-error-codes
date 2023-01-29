@@ -160,4 +160,4 @@ const handleHTTPErrorMessage = (error) => {
   return message;
 };
 
-export { handleHTTPErrorMessage };
+module.exports = handleHTTPErrorMessage;
