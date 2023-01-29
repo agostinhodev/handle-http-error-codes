@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/agostinhodev/handle-http-error-codes/issues"
   },
-  "homepage": "https://github.com/agostinhodev/handle-http-error-codes#readme"
+  "homepage": "https://github.com/agostinhodev/handle-http-error-codes#readme",
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
 }
