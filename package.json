@@ -1,0 +1,24 @@
+{
+  "name": "handle-http-error-codes",
+  "version": "1.0.0",
+  "description": "A handler to generate generic http error messages according to http error codes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agostinhodev/handle-http-error-codes.git"
+  },
+  "keywords": [
+    "http",
+    "error",
+    "codes"
+  ],
+  "author": "Agostinho Neto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agostinhodev/handle-http-error-codes/issues"
+  },
+  "homepage": "https://github.com/agostinhodev/handle-http-error-codes#readme"
+}
