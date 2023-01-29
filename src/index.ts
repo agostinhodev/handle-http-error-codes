@@ -1,4 +1,4 @@
-const handleHTTPErrorCodes = (code: number) => {
+export const handleHTTPErrorCodes = (code: number) => {
     let message = 'An unknown error has occurred';
 
     switch (code) {
@@ -143,5 +143,3 @@ const handleHTTPErrorCodes = (code: number) => {
 
     return message;
 };
-
-export default handleHTTPErrorCodes;
