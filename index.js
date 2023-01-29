@@ -1,7 +1,7 @@
-const handleHTTPErrorMessage = (error) => {
+function handleHTTPErrorCodes(code) {
   let message = "An unknown error has occurred";
 
-  switch (error) {
+  switch (parseInt(code)) {
     case 301:
       message = "Document moved permanently.";
       break;
@@ -158,6 +158,6 @@ const handleHTTPErrorMessage = (error) => {
   }
 
   return message;
-};
+}
 
-module.exports = handleHTTPErrorMessage;
+module.exports = handleHTTPErrorCodes;
