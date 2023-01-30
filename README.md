@@ -1,6 +1,6 @@
-# Handle HTTP error codes
+# Handle HTTP error codes in a user-friendly way
 
-The purpose of this package is to be an alternative when you are using an HTTP call and the web service or API does not return the error message.
+This package is intended to be a **user-friendly** workaround when you are using an HTTP call and the web service or API does not return the error message.
 
 Some web apis often return the status code to the client, however they don't return a content or error object so that our client can make some decision. However, most of them return the status code of the request.
 
