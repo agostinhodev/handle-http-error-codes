@@ -1,6 +1,6 @@
 {
   "name": "handle-http-error-codes",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A handler to generate generic http error messages according to http error codes",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
