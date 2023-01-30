@@ -25,13 +25,13 @@ yarn add handle-http-error-codes
 1. Import the package as following:
 
 ```javascript
-import handleHTTPErrorCodes from 'handle-http-error-codes';
+import { handler } from 'handle-http-error-codes';
 ```
 
 2. Configure the `catch` block to handle the status code and generate a generic error message
 
 ```javascript
-import handleHTTPErrorCodes from 'handle-http-error-codes';
+import { handler } from 'handle-http-error-codes';
 import axios from 'axios';
 
 const options = { method: 'GET', url: 'https://mock.codes/400' };
@@ -42,7 +42,7 @@ axios
         console.log(response.data);
     })
     .catch(error => {
-        let errorMessage = handleHTTPErrorCodes(error.response.status);
+        let errorMessage = handler(error.response.status);
 
         console.error(errorMessage);
     });
