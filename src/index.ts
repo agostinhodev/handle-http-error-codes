@@ -1,14 +1,14 @@
 import axios, { AxiosError } from 'axios';
 import i18next from 'i18next';
 
-import checkDataInstance from './functions/checkInstance';
-import handleGenericError from './functions/handleGenericError';
+import { checkDataInstance } from './functions/checkInstance';
+import { handleGenericError } from './functions/handleGenericError';
 import { initI18next } from './translations';
 
 import { DefaultApiError, Fallback, FallbackApi1, FallbackApi2, MessageFallback, SimpleFallback } from './types/Errors';
 import { Language } from './types/Language';
 
-const handleHttpError = (error: AxiosError | unknown, language: Language) => {
+export const handleHttpError = (error: AxiosError | unknown, language: Language) => {
     initI18next(language);
 
     if (error === null || error === undefined) return i18next.t('error.unrecoverableErrorNull');
@@ -58,5 +58,3 @@ const handleHttpError = (error: AxiosError | unknown, language: Language) => {
     }
     return handleGenericError(error);
 };
-
-export default handleHttpError;

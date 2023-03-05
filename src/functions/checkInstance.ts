@@ -1,7 +1,7 @@
 import { InstanceTypes } from '../types/Errors';
 import checkObjectProps from './checkObjectProps';
 
-const checkDataInstance = (data: object | unknown, instance: InstanceTypes) => {
+export const checkDataInstance = (data: object | unknown, instance: InstanceTypes) => {
     if (data && typeof data === 'object') {
         if (instance === 'default')
             return (
@@ -25,5 +25,3 @@ const checkDataInstance = (data: object | unknown, instance: InstanceTypes) => {
 
     return false;
 };
-
-export default checkDataInstance;

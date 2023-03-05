@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 
-const handleGenericError = (error: unknown) => {
+export const handleGenericError = (error: unknown) => {
     let finalMessage = i18next.t('error.generic');
 
     if (typeof error === 'string') {
@@ -11,5 +11,3 @@ const handleGenericError = (error: unknown) => {
 
     return finalMessage;
 };
-
-export default handleGenericError;

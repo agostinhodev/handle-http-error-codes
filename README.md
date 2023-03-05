@@ -32,13 +32,13 @@ The function **handleHttpError** accepts two parameters:
 1. Import the package as following:
 
 ```javascript
-import handleHttpError from 'handle-http-error-codes';
+import { handleHttpError } from 'handle-http-error-codes';
 ```
 
 2. Update the `catch` block configuration to work with `handleHttpError`.
 
 ```javascript
-import handleHttpError from 'handle-http-error-codes';
+import { handleHttpError } from 'handle-http-error-codes';
 import axios from 'axios';
 
 const options = { method: 'GET', url: 'https://mock.codes/400' };
@@ -62,7 +62,7 @@ axios
 1. The function can also be used with the fetch API, as shown below.
 
 ```javascript
-import handleHttpError from 'handle-http-error-codes';
+import { handleHttpError } from 'handle-http-error-codes';
 
 const options = { method: 'GET' };
 
