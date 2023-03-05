@@ -1,6 +1,7 @@
 {
     "translation": {
         "error": {
+            "generic": "The operation could not be processed at this time. Please try again later.",
             "unrecoverableErrorNull": "Unrecoverable error!! Error is null!",
             "networkError": "Network error",
             "cancelledRequest": "The request was canceled",

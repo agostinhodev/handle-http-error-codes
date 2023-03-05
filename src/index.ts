@@ -1,21 +1,26 @@
 import axios, { AxiosError } from 'axios';
+import i18next from 'i18next';
 
 import checkDataInstance from './functions/checkInstance';
 import handleGenericError from './functions/handleGenericError';
-import { handleHttpErrorCodes } from './functions/handleHttpErrorCodes';
-import { Errors } from './types/Errors';
+import { initI18next } from './translations';
 
-const handleHttpError = (error: AxiosError | unknown) => {
-    if (error === null || error === undefined) return 'Unrecoverable error!! Error is null!';
+import { Errors } from './types/Errors';
+import { Locales } from './types/Locales';
+
+const handleHttpError = (error: AxiosError | unknown, locale: Locales) => {
+    initI18next();
+
+    if (error === null || error === undefined) return i18next.t('error.unrecoverableErrorNull');
 
     if (axios.isAxiosError(error)) {
         // here we have a type guard check, error inside this if will be treated as AxiosError
         const response = error?.response;
         const request = error?.request;
 
-        if (error.code === 'ERR_NETWORK') return 'Network error';
+        if (error.code === 'ERR_NETWORK') return i18next.t('error.networkError');
 
-        if (error.code === 'ERR_CANCELED') return 'The request was canceled';
+        if (error.code === 'ERR_CANCELED') return i18next.t('error.cancelledRequest');
 
         if (response) {
             // The request was made and the server responded with a status code that falls out of the range of 2xx the http status code mentioned above
@@ -42,14 +47,14 @@ const handleHttpError = (error: AxiosError | unknown) => {
 
             if (checkDataInstance(data, 'errorMessage')) return (data as Errors.MessageFallback).errorMessage;
 
-            if (statusCode >= 300 && statusCode <= 599) return handleHttpErrorCodes(statusCode);
+            if (statusCode >= 300 && statusCode <= 599) return i18next.t(`error.httpStatusCodes.${statusCode}`);
         } else if (request) {
             // The request was made but no response was received, `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in Node.js
 
-            return 'The request was made but no response was received';
+            return i18next.t('error.noResponseReceived');
         }
 
-        return 'Both the request and the response failed to return';
+        return i18next.t('error.failedRequestAndResponse');
     }
     return handleGenericError(error);
 };

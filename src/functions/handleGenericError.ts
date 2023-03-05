@@ -1,5 +1,7 @@
+import i18next from 'i18next';
+
 const handleGenericError = (error: unknown) => {
-    let finalMessage = 'The operation could not be processed at this time. Please try again later.';
+    let finalMessage = i18next.t('error.generic');
 
     if (typeof error === 'string') {
         finalMessage = error;
