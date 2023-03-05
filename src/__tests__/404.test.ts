@@ -1,4 +1,4 @@
-import handleHttpError from '../index';
+import { handleHttpError } from '../index';
 
 test('Expected 404', () => {
     expect(handleHttpError({}, 'en')).toBe(
