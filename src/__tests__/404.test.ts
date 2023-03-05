@@ -1,5 +1,7 @@
-import { handler } from '../index';
+import handleHttpError from '../index';
 
 test('Expected 404', () => {
-    expect(handler(404)).toBe('We were unable to find the resource you are looking for. Try again');
+    expect(handleHttpError({}, 'en')).toBe(
+        'The operation could not be processed at this time. Please try again later.',
+    );
 });
