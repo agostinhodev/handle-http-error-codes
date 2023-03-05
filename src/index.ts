@@ -5,7 +5,7 @@ import checkDataInstance from './functions/checkInstance';
 import handleGenericError from './functions/handleGenericError';
 import { initI18next } from './translations';
 
-import { Errors } from './types/Errors';
+import { DefaultApiError, Fallback, FallbackApi1, FallbackApi2, MessageFallback, SimpleFallback } from './types/Errors';
 import { Language } from './types/Language';
 
 const handleHttpError = (error: AxiosError | unknown, language: Language) => {
@@ -26,26 +26,26 @@ const handleHttpError = (error: AxiosError | unknown, language: Language) => {
             // The request was made and the server responded with a status code that falls out of the range of 2xx the http status code mentioned above
             const statusCode = response?.status;
             const data:
-                | Errors.DefaultApiError
-                | Errors.FallbackApi1
-                | Errors.FallbackApi2
-                | Errors.SimpleFallback
-                | Errors.Fallback
+                | DefaultApiError
+                | FallbackApi1
+                | FallbackApi2
+                | SimpleFallback
+                | Fallback
                 | unknown
                 | undefined
-                | Errors.MessageFallback = response?.data;
+                | MessageFallback = response?.data;
 
-            if (checkDataInstance(data, 'default')) return (data as Errors.DefaultApiError).error.message;
+            if (checkDataInstance(data, 'default')) return (data as DefaultApiError).error.message;
 
-            if (checkDataInstance(data, 'fallback1')) return (data as Errors.FallbackApi1).message;
+            if (checkDataInstance(data, 'fallback1')) return (data as FallbackApi1).message;
 
-            if (checkDataInstance(data, 'fallback2')) return (data as Errors.FallbackApi2).description;
+            if (checkDataInstance(data, 'fallback2')) return (data as FallbackApi2).description;
 
-            if (checkDataInstance(data, 'simple')) return (data as Errors.SimpleFallback).message;
+            if (checkDataInstance(data, 'simple')) return (data as SimpleFallback).message;
 
-            if (checkDataInstance(data, 'error')) return (data as Errors.Fallback).error;
+            if (checkDataInstance(data, 'error')) return (data as Fallback).error;
 
-            if (checkDataInstance(data, 'errorMessage')) return (data as Errors.MessageFallback).errorMessage;
+            if (checkDataInstance(data, 'errorMessage')) return (data as MessageFallback).errorMessage;
 
             if (statusCode >= 300 && statusCode <= 599) return i18next.t(`error.httpStatusCodes.${statusCode}`);
         } else if (request) {

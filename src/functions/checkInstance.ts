@@ -1,7 +1,7 @@
-import { Errors } from '../types/Errors';
+import { InstanceTypes } from '../types/Errors';
 import checkObjectProps from './checkObjectProps';
 
-const checkDataInstance = (data: object | unknown, instance: Errors.InstanceTypes) => {
+const checkDataInstance = (data: object | unknown, instance: InstanceTypes) => {
     if (data && typeof data === 'object') {
         if (instance === 'default')
             return (
