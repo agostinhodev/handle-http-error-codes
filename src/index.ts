@@ -11,8 +11,6 @@ import { Language } from './types/Language';
 const handleHttpError = (error: AxiosError | unknown, language: Language) => {
     initI18next(language);
 
-    console.log('\n\n\n\n\n\nTRANSLATE: ', i18next.t('error.unrecoverableErrorNull'), '\n\n\n\n\n\n');
-
     if (error === null || error === undefined) return i18next.t('error.unrecoverableErrorNull');
 
     if (axios.isAxiosError(error)) {
