@@ -6,10 +6,12 @@ import handleGenericError from './functions/handleGenericError';
 import { initI18next } from './translations';
 
 import { Errors } from './types/Errors';
-import { Locales } from './types/Locales';
+import { Language } from './types/Language';
 
-const handleHttpError = (error: AxiosError | unknown, locale: Locales) => {
-    initI18next();
+const handleHttpError = (error: AxiosError | unknown, language: Language) => {
+    initI18next(language);
+
+    console.log('\n\n\n\n\n\nTRANSLATE: ', i18next.t('error.unrecoverableErrorNull'), '\n\n\n\n\n\n');
 
     if (error === null || error === undefined) return i18next.t('error.unrecoverableErrorNull');
 
